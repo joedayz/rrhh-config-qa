@@ -27,7 +27,7 @@ spring:
 
   dataSource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost/rrhh-angular2
+    url: jdbc:mysql://localhost/rrhh2
     username: root
     password: joedayz
     testOnBorrow: true
