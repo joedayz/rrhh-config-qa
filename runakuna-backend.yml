@@ -13,12 +13,12 @@ spring:
   
   
   mail:
-    sender: celticps@tss.com.pe
-    fromIP: 192.168.1.45
-    host: 192.168.0.10
-    username: celticps@tss.com.pe
-    password: celticps2016
-    port: 587
+    sender: campus@joedayz.pe
+    fromIP: campus@joedayz.pe
+    host: smtp.gmail.com
+    username: campus@joedayz.pe
+    password: password
+    port: 465
     properties:
       mail:
         smtp:
@@ -26,14 +26,14 @@ spring:
           starttls.enable: false
 
   dataSource:
-    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
-    url: jdbc:sqlserver://tss_clarksql\sql2014;databaseName=RunaKuna_Dev
-    username: tssrunakuna
-    password: tss
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost/rrhh-angular2
+    username: root
+    password: joedayz
     testOnBorrow: true
     removeAbandonedTimeout: 1800
     removeAbandoned: true
-    validationQuery: select 1
+    validationQuery: select 1 from dual
     #validationQuery:  select sysdate from dual
     logAbandoned: true
     minEvictableIdleTimeMillis: 60000
@@ -45,34 +45,17 @@ spring:
     initialSize: 1
     test-on-connect: true
 
-  marcacionDataSource:
-    driverClassName: net.sourceforge.jtds.jdbc.Driver
-    url: jdbc:jtds:sqlserver://TSS_TICKETSRV/tssAttendance
-    username: tssuser
-    password: tssuser
-    testOnBorrow: true
-    removeAbandonedTimeout: 1800
-    removeAbandoned: true
-    validationQuery: select 1
-    #validationQuery:  select sysdate from dual
-    logAbandoned: true
-    minEvictableIdleTimeMillis: 60000
-    defaultReadOnly: false
-    maxWait: 60000
-    maxIdle: 1
-    minIdle: 0
-    maxActive: 50
-    initialSize: 1
-    test-on-connect: true
+
 
   jpa:
     #database-platform: org.hibernate.dialect.Oracle10gDialect
     #database-platform: org.hibernate.dialect.Oracle12cDialect
+    database-platform: org.hibernate.dialect.MySQL5Dialect
     show-sql: true
     #generate-ddl= true.hibernate.ejb.interceptor=MyInterceptorClassName
 
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
       naming-strategy: org.hibernate.cfg.DefaultNamingStrategy
 
 
