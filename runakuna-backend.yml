@@ -1,0 +1,91 @@
+---
+
+spring:
+  profiles: default
+  
+  
+  
+  security.jwt:
+    tokenExpirationTime: 15 # Number of minutes
+    refreshTokenExpTime: 60 # Minutes
+    tokenIssuer: http://www.tss.com.pe
+    tokenSigningKey: xm8EV6Hy5RMFK4EEACIDAwQus  
+  
+  
+  mail:
+    sender: celticps@tss.com.pe
+    fromIP: 192.168.1.45
+    host: 192.168.0.10
+    username: celticps@tss.com.pe
+    password: celticps2016
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: false
+          starttls.enable: false
+
+  dataSource:
+    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://tss_clarksql\sql2014;databaseName=RunaKuna_Dev
+    username: tssrunakuna
+    password: tss
+    testOnBorrow: true
+    removeAbandonedTimeout: 1800
+    removeAbandoned: true
+    validationQuery: select 1
+    #validationQuery:  select sysdate from dual
+    logAbandoned: true
+    minEvictableIdleTimeMillis: 60000
+    defaultReadOnly: false
+    maxWait: 60000
+    maxIdle: 1
+    minIdle: 0
+    maxActive: 50
+    initialSize: 1
+    test-on-connect: true
+
+  marcacionDataSource:
+    driverClassName: net.sourceforge.jtds.jdbc.Driver
+    url: jdbc:jtds:sqlserver://TSS_TICKETSRV/tssAttendance
+    username: tssuser
+    password: tssuser
+    testOnBorrow: true
+    removeAbandonedTimeout: 1800
+    removeAbandoned: true
+    validationQuery: select 1
+    #validationQuery:  select sysdate from dual
+    logAbandoned: true
+    minEvictableIdleTimeMillis: 60000
+    defaultReadOnly: false
+    maxWait: 60000
+    maxIdle: 1
+    minIdle: 0
+    maxActive: 50
+    initialSize: 1
+    test-on-connect: true
+
+  jpa:
+    #database-platform: org.hibernate.dialect.Oracle10gDialect
+    #database-platform: org.hibernate.dialect.Oracle12cDialect
+    show-sql: true
+    #generate-ddl= true.hibernate.ejb.interceptor=MyInterceptorClassName
+
+    hibernate:
+      ddl-auto: none
+      naming-strategy: org.hibernate.cfg.DefaultNamingStrategy
+
+
+
+    properties:
+      hibernate:
+          order_inserts: true
+          order_updates: true
+          ejb:
+            interceptor: pe.com.tss.runakuna.jpa.RunaKunaEntityInterceptorImpl
+          jdbc:
+            batch_size: 400
+            batch_versioned_data: true
+            
+multipart.maxFileSize: 20MB
+multipart.maxRequestSize: 20MB            
